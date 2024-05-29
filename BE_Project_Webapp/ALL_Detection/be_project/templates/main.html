@@ -1,0 +1,165 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Navbar Example</title>
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Inside your HTML template -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
+
+  <style>
+    /* Optional custom styles */
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">ALL Detection</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#all_info">ALL Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#submit_image">Submit Image</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#all_subtypes">ALL Subtypes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#team_members">Team Members</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="section-container">
+    <section class="video-section">
+      <div>
+        <video autoplay loop muted>
+          <source src="{% static 'dna_cell.mov' %}" type="video/mp4">
+          <!-- Add fallback content here -->
+          Your browser does not support the video tag.
+        </video>
+  
+        <div class="content">
+          <h1 style="color: lightblue">Acute Lymphoblastic Leukemia</h1>
+          <p style="width:70%;font-size: 18px;font-weight: bold;margin: auto;text-align: left;">A type of cancer of the blood and bone marrow that affects white blood cells.
+            Acute lymphoblastic leukemia is the most common childhood cancer. It occurs when a bone marrow cell develops errors in its DNA.
+            Symptoms may include enlarged lymph nodes, bruising, fever, bone pain, bleeding from the gums and frequent infections.
+            Treatments may include chemotherapy or targeted drugs that specifically kill cancer cells.
+            “Acute” means that the leukemia can progress quickly, and if not treated, would probably be fatal within a few months. "Lymphocytic" 
+            means it develops from early (immature) forms of lymphocytes, a type of white blood cell.
+            ALL starts in the bone marrow (the soft inner part of certain bones, where new blood cells are made). 
+            Most often, the leukemia cells invade the blood fairly quickly. They can also sometimes spread to other 
+            parts of the body, including the lymph nodes, liver, spleen, central nervous system (brain and spinal 
+            cord), and testicles (in males). Some cancers can also start in these organs and then spread to the bone 
+            marrow, but these cancers are not leukemia.
+            <br>
+            <a href="https://www.cancer.org/cancer/types/acute-lymphocytic-leukemia/about/what-is-all.html">For more information click on this link</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Section 2 -->
+    <section class="form-section" id="submit_image">
+      <h2 style="text-align: center; margin-bottom: 3%;">Submit blood smear image here</h2>
+      <form action="processData" method="post" class="form" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+          <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="John Doe">
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="form-label">Age</label>
+          <input type="text" name="age" class="form-control" id="exampleFormControlInput1" placeholder="19">
+        </div>
+
+        <div class="form-group">
+            <label for="imageInput">Upload Image</label>
+            <input type="file" name="image" class="form-control-file" id="imageInput" accept=".jpg">
+            <button type="submit" class="btn btn-primary" style="width: 20%;">Submit</button>
+            <img id="display_image" src=""/>
+
+            <div class="output-label">{{label}}</div>
+        </div>
+      </form>
+    </section>
+    
+    <!-- Section 3 -->
+    <section class="subtype-section" id="all_subtypes">
+      <div class="section-content">
+        <h2 style="text-align:center;margin-bottom: 2%;">ALL Subtypes</h2>
+        <div class="section3_container">
+          <div>
+            <img src="{% static 'Im067_0.jpg' %}" width="300" height="300"/>
+            <div style="font-weight: bold;font-size:17px;text-align:center;">
+              <br>
+              Stage L1: small uniform cells
+            </div>
+          </div>
+
+          <div>
+            <img src="{% static 'Im003_2.jpg' %}" width="300" height="300"/>
+            <div style="font-weight: bold;font-size:17px;text-align:center;">
+              <br>
+              Stage L2: large varied cells
+            </div>
+          </div>
+
+          <div>
+            <img src="{% static 'Im003_10.jpg' %}" width="300" height="300"/>
+            <div style="font-weight: bold;font-size:17px;text-align:center;">
+              <br>
+              Stage L3: large varied cells with vacuoles
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section 4 -->
+    <section class="section" id="team_members">
+      <div class="section-content">
+        <h2>Section 4</h2>
+        <p>This is the content of Section 4.</p>
+      </div>
+    </section>
+  </div>
+
+  
+
+  <script src="{% static 'js/index.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</body>
+</html>
